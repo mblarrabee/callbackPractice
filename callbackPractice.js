@@ -25,6 +25,10 @@ and what you should write is the favNum function that makes the code above work,
 
 
   //Code Here for first
+
+function first(nameArray, sayFirstName){
+  sayFirstName(nameArray[0]);
+}
   
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -39,6 +43,10 @@ first(names, function(firstName){
 
 
   //Code Here for last
+
+function last(nameArray, sayLastName){
+  sayLastName(nameArray[nameArray.length-1]);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
@@ -58,6 +66,11 @@ last(names, function(lastName){
 
   //Code Here for multiply
 
+function multiply(num1, num2, displayProduct){
+  var product = num1 * num2;
+  displayProduct(product);
+}
+
 multiply(4, 3, function(answer){
   console.log('The answer is ', answer); //should console.log 12
 })
@@ -74,6 +87,20 @@ multiply(4, 3, function(answer){
 
   //Code Here for contains
 
+function contains(namesArray, name, displayResult){
+  var isItThere;
+  for(var i in namesArray){
+    if(namesArray[i] === name){
+      isItThere = true;
+      break;
+    }
+    else{
+      isItThere = false;
+    }
+  }
+  displayResult(isItThere);
+}
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -84,15 +111,23 @@ contains(names, 'Colt', function(result){
 });
 
 
-
-
-
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
     //Code Here for uniq
+
+function uniq(namesArray, displayUniqueArray){
+  for(var i = 0; i < namesArray.length - 1; i++){
+    for(var j = namesArray.length - 1; j > i; j--){
+      if(namesArray[i] === namesArray[j]){
+        namesArray.splice(j,1);
+      }
+    }
+  }
+  displayUniqueArray(namesArray);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
@@ -110,6 +145,12 @@ uniq(names, function(uniqArr){
 
     //Code Here for each
 
+function each(namesArray, displayArray){
+  for(var i in namesArray){
+    displayArray(namesArray[i], i);
+  }
+}
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -126,6 +167,14 @@ each(names, function(item, indice){
 
 
  //code here for getUserById
+
+function getUserById(userArray, userId, displayUser){
+  for(var i in userArray){
+    if(userArray[i].id === userId){
+      displayUser(userArray[i]);
+    }
+  }
+}
 
 var users = [
   {
